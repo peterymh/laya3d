@@ -15,6 +15,7 @@ export default class CC extends Laya.Script3D {
         this.playerCC=null;
         this.hit=0;
         this.wudi=false;
+        this.Sound_index = 1;
       
        
       
@@ -86,7 +87,11 @@ export default class CC extends Laya.Script3D {
            this.wudi =false;
            this.hit=0;
             this.playerCC.jump();
-           Laya.SoundManager.playSound("res/Sound/jumpSound.mp3",1);
+            if(this.Sound_index == 9){
+              this.Sound_index = 1;
+            }
+           Laya.SoundManager.playSound("res/Sound/" + this.Sound_index + ".mp3",1);
+           this.Sound_index++;
            Laya.stage.event("prtical",this.owner.transform.localPosition);
            var a=this.hitResult.collider.owner;
            
